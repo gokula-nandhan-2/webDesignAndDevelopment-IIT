@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tutorial 4</title>
+	<style>
+	.personal{
+				background-color:#cce6ff;
+				font-family:Arial,Sans-serif;
+				border-radius:15px;
+				margin-right:450px;
+				margin-left:450px;
+				
+			}
+	.booking{
+				background-color:#e6ccb3;
+				font-family:Arial,Sans-serif;
+				border-radius:15px;
+				margin-right:450px;
+				margin-left:450px;
+				
+			}
+	.button{
+				background-color:#C19A6B;
+				border-radius:15px;
+				text-align:right;
+				margin-right:450px;
+				margin-left:450px;
+			}
+	.button1{
+			padding:13px 24px;
+			border-radius:5px;
+			background-color:#7393B3;
+			color:#FFFFFF;
+			border:1px solid #FFFFFF;
+			}
+	h1{
+			font-family:Verdana,Sans-serif;
+			text-align:center;
+			padding:20px;
+			}
+	legend{
+			font-weight:bold;
+			background-color:#E6E6FA;
+			}
+	.radioItem {
+            margin-bottom: 10px;
+			}		
+	</style>
+</head>
+
+<body>
+<h1>Hotel Reservation</h1>
+<form>
+<fieldset class="personal">
+	<legend>Personal Details</legend>
+	<label for="FirstName" required>First Name:</label>
+	<input type="text" name="firstname" size="20" placeholder="Enter your first name"><br>
+	<label for="SurName">Surname:</label>
+	<input type="text" name="surname" size="20" placeholder="Enter your surname"><br>
+	<label for="email">Email address:</label>
+	<input type="email" name="email" id="email"><br>
+	<label for="SetAPassword" required>Setup a password:</label>
+	<input type="text" name="firstname" size="50" placeholder="Min 8 characters,use atleast 1 caps,no special characters">
+</fieldset>
+<br>
+
+<fieldset class="booking">
+	<legend>Booking Details</legend>
+
+	<label for="checkinDays" required>CheckIn day:</label>
+	<input type="date" name="CheckinDays" id="checkinDays" value="2023-02-14"><br>
+	<label for="NumOfDays" required>Number of days:</label>
+	<input type="number" name="NumOfDays"><br>
+	<br>
+	<label for="SingleRoom">Single Room </label>
+	<input type="radio" name="SingleRoom" id="SingleRoom" value="sr" required>
+	<br>
+	<br>
+	<label for="DoubleRoom">Double Room</label>
+	<input type="radio" name="DoubleRoom" id="SingleRoom" value="dr" required>
+	<br>
+	<br>
+	<label for="KingRoom">King Room</label>
+	<input type="radio" name="KingRoom" id="KingRoom" value="kr" required>
+	<br>
+	<br>
+	<label for="breakfast">Breakfast:</label>
+	<select name="breakfast" id="breakfast">
+		<option value="Include" selected required>Include</option>
+		<option value="Not Include" required>Not Include</option>
+	</select>
+	<br>
+	<label for="SpeRequirments">Special Requirements:</label>
+	<textarea name="SpeRequirments" id="SpeRequirments" rows="5" cols="20">Please provide any special Requirements
+	</textarea>
+	</fieldset>
+	<br>
+
+<fieldset class="button">
+	<input class="button1" type="reset" name="reset" value="Reset">
+	<input class="button1" type="submit" name="Submit" value="Send">
+</fieldset>
+</form>
+</body>
+</html>
