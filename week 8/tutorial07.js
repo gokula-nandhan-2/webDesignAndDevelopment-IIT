@@ -1,91 +1,65 @@
-function getRadioValue(radioArray){
-    for(let i = 0; i<radioArray.length ; i++){
-        if(radioArray[i].checked){
-            return radioArray[i].value;
-        }
+
+// Utility functions to get selected values
+function getRadioValue(name) {
+    const radios = document.querySelectorAll(`input[name="${name}"]`);
+    for (let radio of radios) {
+        if (radio.checked) return radio.value;
     }
-    return "";
+    return null;
 }
 
-function getSelectedValue(selectList){
-    return selectList[selectList.selectedIndex].value;
+function getSelectedValue(selectId) {
+    const select = document.getElementById(selectId);
+    return select.options[select.selectedIndex].value;
 }
 
-function getSelectedText(selectList){
-    return selectList.options[selectList.selectedIndex].text;
-}
-
-
-
-document.addEventListener(onchange,CheckOptions(this.form));
-
-function CheckOptions(formRef){
-    displayBouquet(chosenBoquet);
-}
-
-function displayBouquet(bouquet){
-    switch(bouquet){
-        case "white":
-            break;
-        case "pink":
-            break;
-        case "red":
-            break;
-    }
-}
-
-function resetOrder(){
-
-}
-
-
-
-
-
-
-document.getElementById("bouquetOptions").addEventListener("change", function () {
-  CheckOptions(document.forms[0]);
+// Event listener for dropdown selection
+document.getElementById("select").addEventListener("change", function () {
+    CheckOptions();
 });
 
-document.getElementById("orderForm").addEventListener("reset", function () {
-  resetOrder();
+// Event listener for form reset
+document.querySelector("form").addEventListener("reset", function () {
+    resetOrder();
 });
 
-function CheckOptions(formRef) {
-  let optionValue = getSelectedValue(formRef.bouquetOptions);
+// Core function to check dropdown and radio selections
+function CheckOptions() {
+    const option = getSelectedValue("select");
 
-  if (optionValue.includes("Champagne")) {
-    document.getElementById("product1").querySelector("img").src = "whiteChamp.jpg";
-    document.getElementById("product2").querySelector("img").src = "pinkChamp.jpg";
-    document.getElementById("product3").querySelector("img").src = "redChamp.jpg";
-  } else {
-    document.getElementById("product1").querySelector("img").src = "white.jpg";
-    document.getElementById("product2").querySelector("img").src = "pink.jpg";
-    document.getElementById("product3").querySelector("img").src = "red.jpg";
-  }
+    // Swap images if champagne options selected
+    if (option.includes("Champagne")) {
+        document.querySelector("#product1 img").src = "imagesJS4/images/white-gift.jpeg";
+        document.querySelector("#product2 img").src = "imagesJS4/images/pink-gift.jpeg";
+        document.querySelector("#product3 img").src = "imagesJS4/images/red-gift.jpeg";
+    } else {
+        document.querySelector("#product1 img").src = "imagesJS4/images/white.jpeg";
+        document.querySelector("#product2 img").src = "imagesJS4/images/pink.jpeg";
+        document.querySelector("#product3 img").src = "imagesJS4/images/red.jpeg";
+    }
 
-  let chosenBouquet = getRadioValue(formRef.colour);
-  displayBouquet(chosenBouquet);
+    // Get selected bouquet color
+    const bouquet = getRadioValue("colour");
+    displayBouquet(bouquet);
 }
 
+// Show selected product in the order preview
 function displayBouquet(bouquet) {
-  let orderDiv = document.getElementById("order");
-  if (!bouquet) {
-    orderDiv.innerHTML = "";
-    return;
-  }
+    const orderDiv = document.getElementById("order");
 
-  let selectedProduct = document.getElementById("product1");
-  if (bouquet === "pink") selectedProduct = document.getElementById("product2");
-  if (bouquet === "red") selectedProduct = document.getElementById("product3");
+    if (!bouquet) {
+        orderDiv.innerHTML = "";
+        return;
+    }
 
-  orderDiv.innerHTML = selectedProduct.innerHTML;
+    const product = document.getElementById(`product${bouquet === "white" ? 1 : bouquet === "pink" ? 2 : 3}`);
+    orderDiv.innerHTML = product.innerHTML;
 }
 
+// Reset to default bouquet images and clear order
 function resetOrder() {
-  document.getElementById("product1").querySelector("img").src = "white.jpg";
-  document.getElementById("product2").querySelector("img").src = "pink.jpg";
-  document.getElementById("product3").querySelector("img").src = "red.jpg";
-
-  document.getElementById("order").innerHTML = "";
+    document.querySelector("#product1 img").src = "imagesJS4/images/white.jpeg";
+    document.querySelector("#product2 img").src = "imagesJS4/images/pink.jpeg";
+    document.querySelector("#product3 img").src = "imagesJS4/images/red.jpeg";
+    document.getElementById("order").innerHTML = "";
 }
