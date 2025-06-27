@@ -26,7 +26,7 @@ This project is a practical output of a step-by-step tutorial series that guided
 ## ▶️ How to Run
 
 1. Download or clone the project
-2. Open any `filename.html` in a modern web browser
+2. Open any htm file in a modern web browser
 3. Interact with the form to preview your webpage and see real-time updates
 
 ---
